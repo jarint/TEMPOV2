@@ -132,7 +132,7 @@ assemble <- function(){
   Frame <<-(as.data.frame(tableForUse))
 }
 
-Tempo2 <- function(Frame = Frame, site = 0, output = outPath){
+Tempo2 <- function(frame = Frame, site = 0, output = outPath){
   if (site == 0 && exists("frame")){
     setwd(output)
     Table1 <- frame
@@ -1184,7 +1184,7 @@ Tempo2 <- function(Frame = Frame, site = 0, output = outPath){
     }
   }
   if (typeof(site) == "character" && exists("frame")){
-    Table1 <- Frame
+    Table1 <- frame
     site <- gsub("[[:punct:]]", "", site)
     site <- trimws(site, which = "both")
     site <- tolower(site)
