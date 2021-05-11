@@ -498,6 +498,7 @@ Tempo2 <- function(frame = Frame, site = 0, output = outPath){
     Table1 <- frame
     lower = (site*1000)
     upper = ((site*1000)+999)
+    nall = paste("(n = ",as.character(length(Table1$ptid)),")", sep = "")
     master<-Table1[FALSE, ]
     for (row in 1:nrow(Table1)){
       for (i in lower:upper){
@@ -533,7 +534,7 @@ Tempo2 <- function(frame = Frame, site = 0, output = outPath){
       tab <- table(cut(DateTable$rdm_date, 'month'))
       DatesByMonth <- data.frame(Date=format(as.Date(names(tab)), '%m/%Y'),
                                  Frequency=as.vector(tab))
-      boxplot(DatesByMonth$Frequency,main = paste("Subjects Recruited by Month - All Sites","\n",n),
+      boxplot(DatesByMonth$Frequency,main = paste("Subjects Recruited by Month - All Sites","\n",nall),
               ylab = "Number of Subjects", axis.lty = 1, horizontal = F)
       text(y=fivenum(DatesByMonth$Frequency), labels = fivenum(DatesByMonth$Frequency), x=1.25)
       
@@ -563,7 +564,7 @@ Tempo2 <- function(frame = Frame, site = 0, output = outPath){
         piepercent[character] <- paste(piepercent[character], percent)
       }
       cols = c("#E0F3DB", "#A8DDB5", "#4EB3D3", "#0868AC")
-      pie(imgmod, main = paste("Imaging Modality Used to Randomize - All Sites","\n",n), labels = piepercent, clockwise = T,col = cols)
+      pie(imgmod, main = paste("Imaging Modality Used to Randomize - All Sites","\n",nall), labels = piepercent, clockwise = T,col = cols)
       legend("topright", c("spCTA","mCTA","CTP","MRA"), fill = cols)
       
       #########################################################
@@ -732,7 +733,7 @@ Tempo2 <- function(frame = Frame, site = 0, output = outPath){
       }
       Table1$timeonsettocontrol<-timeonsettocontrol
       
-      boxplot(timeonsettocontrol, na.rm=T, main = paste("Time from Onset to Randomization - All Sites","\n",n),
+      boxplot(timeonsettocontrol, na.rm=T, main = paste("Time from Onset to Randomization - All Sites","\n",nall),
               ylab = "Time (Hours)", horizontal = F, staplewex = 1)
       text(y=fivenum(timeonsettocontrol), labels = fivenum(timeonsettocontrol), x=1.25)
       
@@ -843,7 +844,7 @@ Tempo2 <- function(frame = Frame, site = 0, output = outPath){
       x<-as.vector(Table1$rdm_nihss)
       remove<-c(99)
       x<-x [! x %in% remove]#gets rid of incorrect values
-      boxplot(x, na.rm=T, main = paste("NIHSS Total Score (Baseline) - All Sites","\n",n), ylab = "Score", horizontal = F, staplewex = 1, las = 1)
+      boxplot(x, na.rm=T, main = paste("NIHSS Total Score (Baseline) - All Sites","\n",nall), ylab = "Score", horizontal = F, staplewex = 1, las = 1)
       text(y=fivenum(x), labels = fivenum(x), x=1.25)
       
       #########################################################
@@ -861,7 +862,7 @@ Tempo2 <- function(frame = Frame, site = 0, output = outPath){
       z<-c((Sys.Date()-age_vec)/365)
       z<-signif(z, digits = 3)
       z<-as.numeric(z)
-      boxplot(z, na.rm = T, ylab = "Age (Years)", horizontal = F, staplewex = 1, main = paste("Age of TEMPO-2 Enrollees - All Sites","\n",n))
+      boxplot(z, na.rm = T, ylab = "Age (Years)", horizontal = F, staplewex = 1, main = paste("Age of TEMPO-2 Enrollees - All Sites","\n",nall))
       text(y=fivenum(z), labels = fivenum(z), x = 1.25)
       
       #########################################################
@@ -887,7 +888,7 @@ Tempo2 <- function(frame = Frame, site = 0, output = outPath){
         piepercent[character] <- paste(piepercent[character], percent)
       }
       cols = c("#E0F3DB", "#4EB3D3")
-      pie(y, labels = piepercent, main = paste("Sex of TEMPO-2 Enrollees - All Sites","\n",n),
+      pie(y, labels = piepercent, main = paste("Sex of TEMPO-2 Enrollees - All Sites","\n",nall),
           clockwise = T, col = cols)
       legend("topright", c("Female","Male"), fill = cols)
       
@@ -977,7 +978,7 @@ Tempo2 <- function(frame = Frame, site = 0, output = outPath){
       taball<-as.data.frame(occlocation)
       rownames(taball) <- c("ICA", "M1","M2","M3","VA","P1","P2","A1","A2","PICA","BA")
       taball<-t(taball)
-      barplot(taball, main = paste("Occlusion Location - All Sites","\n",n), xlab = "Location", axis.lty = 1,
+      barplot(taball, main = paste("Occlusion Location - All Sites","\n",nall), xlab = "Location", axis.lty = 1,
               ylab = "Number of Cases", las = 1, cex.names = 0.8, ylim = range(pretty(c(0,max(occlocation, na.rm = T)))))
       
       #########################################################
