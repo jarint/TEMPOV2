@@ -1663,5 +1663,3 @@ Tempo2 <- function(Frame = Frame, site = 0, output = outPath){
     print("You have entered an invalid site name. Type '?Tempo2' in the console or check the documentation for usage instructions.")
   }
 }
-
-}
