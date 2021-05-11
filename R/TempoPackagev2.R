@@ -495,7 +495,7 @@ Tempo2 <- function(frame = Frame, site = 0, output = outPath){
     
   }
   if (site != 0 && (typeof(site) == "double" || typeof(site) == "integer") && exists("Frame")){
-    Table1 <- Frame
+    Table1 <- frame
     lower = (site*1000)
     upper = ((site*1000)+999)
     master<-Table1[FALSE, ]
