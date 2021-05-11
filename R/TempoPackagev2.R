@@ -1184,7 +1184,7 @@ Tempo2 <- function(Frame = Frame, site = 0, output = outPath){
     }
   }
   if (typeof(site) == "character" && exists("frame")){
-    Table1 <- frame
+    Table1 <- Frame
     site <- gsub("[[:punct:]]", "", site)
     site <- trimws(site, which = "both")
     site <- tolower(site)
